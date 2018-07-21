@@ -87,7 +87,7 @@ class LearningAgent(Agent):
         ###########
         # Calculate the maximum Q-value of all actions for a given state
         var1 = Q[state]        
-        maxQ = max(var1, value=lambda k: var1[k])
+        maxQ = max(var1, key=lambda k: var1[k])
         keys = [k for k,v in var1.items() if v==var1[maxQ]]
         maxQ = keys[random.randint(0,len(keys)-1)]
 
@@ -103,7 +103,7 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-        self.Q[state] = {'forward':0.0, 'left':0.0, 'right':0.0, None:0.0}
+        self.Q[state] = {None:0.0, 'forward':0.0, 'left':0.0, 'right':0.0}
         return 
 
 
