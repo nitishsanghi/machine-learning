@@ -85,11 +85,10 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-        var1 = Q[state]
-        var1 = random.shuffle(var1)
-        
-        maxQ = max(var1, key=lambda k: var1[k])
-        
+        var1 = Q[state]        
+        maxQ = max(var1, value=lambda k: var1[k])
+        keys = [k for k,v in var1.items() if v==var1[maxQ]]
+        maxQ = keys[random.randint(0,len(keys)-1)]
 
         return maxQ 
 
@@ -182,7 +181,7 @@ def run():
     agent = env.create_agent(LearningAgent)
     agent.learning = True
     agent.epsilon = 1.0
-    agent.alpha = 0.5
+    agent.alpha = 0.7
     
     ##############
     # Follow the driving agent
