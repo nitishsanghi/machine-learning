@@ -24,7 +24,8 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Set any additional class parameters as needed
-        self.trials = 1
+        self.trials = 0
+        self.a = .01
 
 
     def reset(self, destination=None, testing=False):
@@ -42,7 +43,7 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
         if testing == False:
-			self.epsilon = self.epsilon-.005
+			self.epsilon = math.exp(-self.a*self.trials)
 			self.alpha = self.alpha
 			self.trials = self.trials + 1
         
