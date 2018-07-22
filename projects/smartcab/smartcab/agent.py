@@ -25,7 +25,7 @@ class LearningAgent(Agent):
         ###########
         # Set any additional class parameters as needed
         self.trials = 0
-        self.a = .01
+        self.a = .005
 
 
     def reset(self, destination=None, testing=False):
@@ -43,7 +43,12 @@ class LearningAgent(Agent):
         # Update additional class parameters as needed
         # If 'testing' is True, set epsilon and alpha to 0
         if testing == False:
-			self.epsilon = math.exp(-self.a*self.trials)
+			#self.epsilon = self.epsilon - float(self.trials*self.trials)/10000
+			if self.trials > 200:
+				self.epsilon = math.exp(-self.a*(self.trials-200))
+			#self.epsilon = self.epsilon - 0.05
+			#self.epsilon = math.exp(-self.a*(self.trials))
+			
 			self.alpha = self.alpha
 			self.trials = self.trials + 1
         
@@ -73,8 +78,8 @@ class LearningAgent(Agent):
         # With the hand-engineered features, this learning process gets entirely negated.
         
         # Set 'state' as a tuple of relevant data for the agent        
+        #state = (inputs['light'],inputs['left'],inputs['oncoming'],waypoint)
         state = (inputs['light'],inputs['left'],inputs['oncoming'],waypoint)
-
         return state
 
 
@@ -86,12 +91,9 @@ class LearningAgent(Agent):
         ## TO DO ##
         ###########
         # Calculate the maximum Q-value of all actions for a given state
-        var1 = Q[state]        
-        maxQ = max(var1, key=lambda k: var1[k])
-        keys = [k for k,v in var1.items() if v==var1[maxQ]]
-        maxQ = keys[random.randint(0,len(keys)-1)]
-
-        return maxQ 
+        maxQ = 0.0
+        maxQ = max(self.Q[state].values()) 
+        return maxQ
 
 
     def createQ(self, state):
@@ -103,8 +105,12 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-        self.Q[state] = {None:0.0, 'forward':0.0, 'left':0.0, 'right':0.0}
-        return 
+        if self.learning == True:
+        	if state in self.Q:
+        		pass
+        	else:
+        		self.Q[state] = {None:0.0, 'forward':0.0, 'left':0.0, 'right':0.0}
+		return 
 
 
     def choose_action(self, state):
@@ -125,10 +131,12 @@ class LearningAgent(Agent):
         # Be sure that when choosing an action with highest Q-value that you randomly select between actions that "tie".
         if self.learning == False:
         	action = self.valid_actions[random.randint(0,3)]
-        elif self.learning == True and random.randrange(0,1)<=abs(self.epsilon):
-        	action = self.valid_actions[random.randint(0,3)]
+        if self.learning == True:
+        	if random.randrange(0,1)<self.epsilon:
+        		action = self.valid_actions[random.randint(0,3)]
         else:
-        	action = self.get_maxQ(state)
+        	actionlist = [key for key,value in Q[state].items() if value==self.get_maxQ(state)]
+        	action = random.choice(actionlist)
         return action
 
 
@@ -142,8 +150,8 @@ class LearningAgent(Agent):
         ###########
         # When learning, implement the value iteration update rule
         #   Use only the learning rate 'alpha' (do not use the discount factor 'gamma')
-        self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*reward
-
+        if self.learning == True:
+        	self.Q[state][action] = (1-self.alpha)*self.Q[state][action] + self.alpha*reward
         return 
 
 
@@ -179,10 +187,10 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent)
-    agent.learning = True
-    agent.epsilon = 1.0
-    agent.alpha = 0.7
+    agent = env.create_agent(LearningAgent, learning = True)
+    #agent.learning = True
+    #agent.epsilon = 1.0
+    #agent.alpha = 0.5
     
     ##############
     # Follow the driving agent
