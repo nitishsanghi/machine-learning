@@ -7,14 +7,16 @@ November  8th, 2018
 ## The Proposal
 ### Domain Background
 Transportation technology have exponentially evolved over the last century, both in speed, comfort, and safety. The evolution has democratized transportation empowering people. The generation of transportation technology is taking advantage
-of the tremendous break throughs made in Robotics, Computing, and Hardware tech. Truly "Autonomous Vehicles" whether on land, air or underwater have now become a reality opening up transportation solutions which not only will make transportation faster, safe, and efficient but also has the potential to make a dent in our fight to stop/slow climate change.
+of the tremendous break throughs made in Robotics, Computing, and Hardware tech. Truly "Autonomous Vehicles" whether on land, air or underwater have now become a reality opening up transportation solutions which not only will make transportation faster, safe, and efficient but also has the potential to make a dent in our fight to stop/slow climate change. Autnomous Vehicles require massive amounts of real world data to be captured, processed, and interpreted to make autonomous decisions to manuveur the vehicle to its destination in a safe manner. It is an extremely hard problem requiring integration of sensors with the vehicle which capture data to be processed by the computers on board the vehicle, tracking features like road signs, lanes, vehicles, pedestrians, traffic lights, and a number of other things that we might take for garantted when we drive.
 
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+Various computer vision techniques have been used in the past to identify and characterize features an autonomous vehicle might encounter as it moves. One of the most fundamental classifications that a vehicle will have to make is classifying traffic signs and other vehicles which are moving around it. The methodologies in deep learning have provided powerful tools which when integrated with basic computer vision techniques can "teach" a vehicle to identify features discussed above and classify them appropriately. I am interested in building a classifier to identify different road signs and distinguish them from cars moving along side the vehicle and other features like trees, road curbs, road dividers, etc.
+
+ADD ACADEMIC REFERENCES 
 
 ### Problem Statement
-_(approx. 1 paragraph)_
+The problem that I am proposing to solve is to desing a deep learning network to classify road signs, vehicles, and other features as misc which are captured by sensors on an autonomous vehicle.
 
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+ADD Metrics
 
 ### Datasets and Inputs
 _(approx. 2-3 paragraphs)_
