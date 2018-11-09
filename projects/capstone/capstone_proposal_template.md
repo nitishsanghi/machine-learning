@@ -1,6 +1,7 @@
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
 Nitish Sanghi
+
 November  8th, 2018
 
 ## The Proposal
