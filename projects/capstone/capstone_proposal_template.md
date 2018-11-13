@@ -28,7 +28,9 @@ The datasets will be input into a Convolutional Neural Network (CNN) to train it
 ### Solution Statement
 _(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+The solution for the proposed problem is output of a trained CNN which classifies test inputs to appropriates classes. The classes are 43 road signs, vehicle, and non-vehicle. In all there are 45 classes for the CNN to classify the inputs to.
+
+Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
