@@ -14,14 +14,16 @@ Various computer vision techniques have been used in the past to identify and ch
 ADD ACADEMIC REFERENCES 
 
 ### Problem Statement
-The problem that I am proposing to solve is to desing a deep learning network to classify road signs, vehicles, and other features as misc which are captured by sensors on an autonomous vehicle.
+The problem that I am proposing to solve is to design a deep learning network to classify road signs, vehicles, and other features as misc which are captured by cameras on an autonomous vehicle.
 
 ADD Metrics
 
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
+The dataset being used is comprised of road sign images, vehicle images captured by cameras placed on the front right, left, and centre of the vehicle, and miscellaneous features like trees, sky, road, curbs, dividers etc. These are some of the features that an autonomous vehicle would encounter as it navigates from point A to B. Efficient and safe functioning of the autonomous vehicle requires classification and identification of features in appropriate catergories so as to help the decision making process of the autonomous vehicle. 
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+The datasets were obtained from other Udacity courses.The road sign images have 43 different classifications and have been shot at differt angles, distances, and time of day which provides enough variation for training a network. The vehicle and miscellaneous datasets are split into vehicle and non-vehicles categories. Some of the vehicles capture the back end of the vehicles and some the sides and the back end. The vehicles images are also captured from different angles (left bias or right bias). 
+
+The datasets will be input into a Convolutional Neural Network (CNN) to train it classify the road signs appropriately, vehicles as vehicles, and miscellaneous features. Before the data is fed into the CNN it will be processed and augmented to increase training data size. Using these datasets a CNN can be trained to identify some basic/simple features an autonomous vehicle will encounter while navigating. A potential extension to this can be further classification of the features independently like type of surrounding vehicle, type of miscellaneous features, etc in a complete image frame captured by camera sensors.
 
 ### Solution Statement
 _(approx. 1 paragraph)_
