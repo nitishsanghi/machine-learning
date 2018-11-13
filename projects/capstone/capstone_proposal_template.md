@@ -36,8 +36,10 @@ To evaluate the efficiency of the network "Accuracy" will be used as the metric.
 
 ### Project Design
 
+The first step is to collect the appropriate datasets and split them into training, validation, and test sets. The next step is to explore the datasets. Check for all the classes present in the datasets. The studying the distribution of different classes which can be easily represented as an histogram is important. The dataset classes need to have enough data points to train the network for high accuracy. Next step would be to process the data. The data can be augmented by applying image filters like mirror, swirl, gaussian blurring, perspective changes, etc. Once the data has been sufficiently processed the next step is to train the CNN and iterate while changing parts of the CNN to optimize the "Loss" of the network. 
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+The next part is to implement LeNet 5 which is the benchmark model. Both networks will be trained and validated using the same datasets. Once the networks are trained, the test dataset is fed into both networks. The networks are going to output the predicted classes of the test data. Based on the number of corrected classifications, the accuracy of the two networks will be worked out. The goal is the design a CNN which performs as good as or better than the benchmark model. 
+
 
 -----------
 
