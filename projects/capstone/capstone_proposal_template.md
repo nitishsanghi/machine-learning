@@ -26,21 +26,13 @@ The datasets were obtained from other Udacity courses.The road sign images have 
 The datasets will be input into a Convolutional Neural Network (CNN) to train it classify the road signs appropriately, vehicles as vehicles, and miscellaneous features. Before the data is fed into the CNN it will be processed and augmented to increase training data size. Using these datasets a CNN can be trained to identify some basic/simple features an autonomous vehicle will encounter while navigating. A potential extension to this can be further classification of the features independently like type of surrounding vehicle, type of miscellaneous features, etc in a complete image frame captured by camera sensors.
 
 ### Solution Statement
-_(approx. 1 paragraph)_
-
 The solution for the proposed problem is output of a trained CNN which classifies test inputs to appropriates classes. The classes are 43 road signs, vehicle, and non-vehicle. In all there are 45 classes for the CNN to classify the inputs to.
 
-Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
-
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+LeNet 5 will be used as the benchmark model. The indented solution will be classification of the the various road signs, vehicles, and non-vehicles in the correct categories. The results of the benchmark model will be compared using the "Accuracy" as the evaluation metric which is the percentage of correct classifications.
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
-
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+To evaluate the efficiency of the network "Accuracy" will be used as the metric. For example, if a 1000 images are input to the CNN and the network correctly classifies 937 images, then the accuracy would be 93.7%. The evaluation metric is relatively simple and straight forward. Both benchmark and solution model will be evaluated using the "Accuracy" as the evaluation metric.
 
 ### Project Design
 _(approx. 1 page)_
