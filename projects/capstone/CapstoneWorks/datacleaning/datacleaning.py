@@ -1,7 +1,8 @@
+import matplotlib
+matplotlib.use('Agg')
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
 import seaborn as sb
 from sklearn.decomposition import PCA
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier, AdaBoostClassifier, ExtraTreesClassifier
@@ -16,7 +17,7 @@ from sklearn.linear_model import SGDClassifier, PassiveAggressiveClassifier, Per
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis, QuadraticDiscriminantAnalysis
 from sklearn.neural_network import MLPClassifier
 import scipy.stats as ss
-matplotlib.use('Agg')
+
 
 #### Data Read from CSV
 df = pd.read_csv('creditdataset.csv')
