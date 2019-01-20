@@ -1,0 +1,7 @@
+  Classifier   Dataset  Training Score  Accuracy  Precision    Recall  \
+0         DT  Raw Data        0.781690  0.779902   0.592471  0.342479   
+1        ETC  Raw Data        0.745395  0.753556   0.000000  0.000000   
+
+         F1       AUC  
+0  0.434053  0.632718  
+1  0.000000  0.500000  
