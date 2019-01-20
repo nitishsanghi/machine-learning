@@ -19,6 +19,7 @@ from sklearn.neural_network import MLPClassifier
 import scipy.stats as ss
 from numpy.random import randint
 import csv
+import time
 
 
 #### Data Read from CSV
@@ -30,7 +31,11 @@ datasets = [newdf, df_reduced]
 dsname = ['Curated Data', 'Reduced Data']
 dftab = pd.DataFrame(columns = ['Classifier','Dataset', 'Training Score', 'Accuracy', 'Precision', 'Recall', 'F1', 'AUC'])
 i = 0
+print 'Entering Loop'
+start_time = time.clock()
+print 'Time at start of loop : ', time.clock()
 for x in datasets:
+	train_start_time = time.clock()
 	train, test = train_test_split(x)
 	y_train = train['Y']
 	x_train = train.drop(['Y'],axis = 1)
@@ -53,7 +58,7 @@ for x in datasets:
 # 	tree_name = dsname[i] + ".dot"
 # 	tree.export_graphviz(best_model,tree_name)
 # 	
-# 	i = i + 1
+	i = i + 1
 	tree_parameters_etc = {"criterion": ["gini","entropy"], 'max_depth': np.linspace(1,100,5), 'max_features': ['auto', 'sqrt'], 'min_samples_leaf': np.linspace(0.1,.5,32), 'min_samples_split': np.linspace(0.1,1,32), 'n_estimators': range(50,1000,50)}
 	etc = ExtraTreesClassifier()
 	randomsearch = RandomizedSearchCV(etc, tree_parameters_etc, cv = 6, n_iter = 200, scoring = metrics.make_scorer(metrics.roc_auc_score))
@@ -66,7 +71,13 @@ for x in datasets:
 	predicted = pd.DataFrame(best_model.predict(x_test))
 	fpr, tpr, thres = metrics.roc_curve(y_test,predicted)
 	print "Test Data AUC etc" +dsname[i]+  " : ",metrics.auc(fpr,tpr)
-
+	train_end_time = time.clock()
+	print 'Train time for ' + dsname[i]+ ' : ',train_start_time - train_end_time
+	
+	
+print 'Exiting Loop'
+end_time = time.clock()
+print "Total loop time : ", start_time - end_time
 # 
 # 
 # tree_parameters_rf = {"criterion": ["gini","entropy"], 'max_depth': np.linspace(1,100,5), 'max_features': ['auto', 'sqrt'], 'min_samples_leaf': np.linspace(0.1,.5,32), 'min_samples_split': np.linspace(0.1,1,32), 'n_estimators': np.linspace(10,1000,20)}
